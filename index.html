@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Bromica MC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #1A1A2E;
+            --light: #F7F7F7;
+            --gradient-1: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+            --gradient-2: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+            --gradient-3: linear-gradient(135deg, #FFE66D 0%, #FFB347 100%);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            padding: 1rem 5%;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 5% 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 6s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 1000px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero h1 span {
+            display: block;
+            background: linear-gradient(90deg, #FFE66D, #FF6B6B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient-3);
+            color: var(--dark);
+            box-shadow: 0 10px 30px rgba(255, 230, 109, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(255, 230, 109, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about-content h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-2);
+            border-radius: 30px;
+            transform: rotate(-5deg);
+            z-index: -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(180deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: var(--gradient-1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card:nth-child(2) .service-icon {
+            background: var(--gradient-2);
+        }
+
+        .service-card:nth-child(3) .service-icon {
+            background: var(--gradient-3);
+        }
+
+        .service-card:nth-child(4) .service-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .service-card:nth-child(5) .service-icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .service-card:nth-child(6) .service-icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            opacity: 0.9;
+        }
+
+        /* Team Section */
+        .team {
+            background: linear-gradient(180deg, #c3cfe2 0%, #f5f7fa 100%);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-image {
+            height: 300px;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .team-card:nth-child(2) .team-image {
+            background: var(--gradient-2);
+        }
+
+        .team-card:nth-child(3) .team-image {
+            background: var(--gradient-3);
+        }
+
+        .team-card:nth-child(4) .team-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .team-info {
+            padding: 2rem;
+        }
+
+        .team-info h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-info p {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            color: var(--dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--gradient-1);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            margin: 0 1rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            opacity: 1;
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-1);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-content h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .modal-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .modal-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .modal-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .about-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image::before {
+                transform: rotate(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .legal-links a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-1);
+            border-radius: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">PT BROMICA MC</div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang Kami</a></li>
+                <li><a href="#services">Layanan</a></li>
+                <li><a href="#portfolio">Portofolio</a></li>
+                <li><a href="#team">Tim</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-badge">🚀 Kreativitas Tanpa Batas</div>
+                <h1>PT BROMICA MC<br><span>Advertising Agency</span></h1>
+                <p>Mitra strategis Anda dalam menciptakan kampanye periklanan yang berdampak dan memorable. Menggabungkan kreativitas dengan strategi bisnis untuk hasil yang luar biasa.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Mulai Proyek <i class="fas fa-arrow-right"></i></a>
+                    <a href="#services" class="btn btn-secondary">Lihat Layanan <i class="fas fa-play"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="section-title">
+                <h2>Tentang Kami</h2>
+                <p>Mengenal lebih dekat siapa kami dan apa yang kami lakukan</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Kreativitas yang Menginspirasi</h3>
+                    <p>PT BROMICA MC adalah agensi periklanan yang berdedikasi untuk membantu brand Anda mencapai potensi maksimal. Dengan pengalaman bertahun-tahun di industri kreatif, kami memahami pentingnya komunikasi visual yang efektif dan strategi marketing yang tepat.</p>
+                    <p>Tim kami terdiri dari para profesional kreatif yang bersemangat dalam menciptakan solusi inovatif untuk setiap tantangan periklanan. Dari konsep hingga eksekusi, kami bekerja sama dengan Anda untuk mencapai tujuan bisnis Anda.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Tahun Pengalaman</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Proyek Sukses</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Klien Puas</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='500' viewBox='0 0 600 500'%3E%3Crect fill='%23667eea' width='600' height='500'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='40' fill='white'%3ECreative Team%3C/text%3E%3C/svg%3E" alt="Creative Team">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="section-title">
+                <h2>Layanan Kami</h2>
+                <p>Solusi periklanan komprehensif untuk kebutuhan bisnis Anda</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h3>Periklanan TV & Digital</h3>
+                    <p>Kampanye periklanan TV dan digital yang menarik dan berdampak untuk meningkatkan brand awareness dan konversi.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3>Creative Copywriting</h3>
+                    <p>Copywriting kreatif dan persuasif untuk berbagai media, dari website hingga materi promosi.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Desain Grafis</h3>
+                    <p>Desain visual yang menakjubkan untuk logo, brosur, banner, dan semua kebutuhan branding Anda.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Fotografi & Videografi</h3>
+                    <p>Layanan fotografi profesional dan produksi video untuk kebutuhan komersial dan brand.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Strategi Branding</h3>
+                    <p>Pengembangan strategi branding yang komprehensif untuk membangun identitas brand yang kuat.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Media Planning</h3>
+                    <p>Perencanaan media yang efektif dan efisien untuk memaksimalkan ROI kampanye periklanan Anda.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio" id="portfolio">
+            <div class="section-title">
+                <h2>Portofolio Kami</h2>
+                <p>Karya-karya terbaik yang telah kami ciptakan</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect fill='%23FF6B6B' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EProject 1%3C/text%3E%3C/svg%3E" alt="Project 1">
+                    <div class="portfolio-overlay">
+                        <h4>Kampanye Produk FMCG</h4>
+                        <p>Periklanan TV dan Digital untuk brand consumer goods terkemuka</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect fill='%234ECDC4' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EProject 2%3C/text%3E%3C/svg%3E" alt="Project 2">
+                    <div class="portfolio-overlay">
+                        <h4>Rebranding Startup</h4>
+                        <p>Transformasi visual dan strategi branding untuk startup teknologi</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect fill='%23FFE66D' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EProject 3%3C/text%3E%3C/svg%3E" alt="Project 3">
+                    <div class="portfolio-overlay">
+                        <h4>Kampanye Sosial Media</h4>
+                        <p>Strategi konten kreatif untuk peningkatan engagement</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect fill='%23667eea' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EProject 4%3C/text%3E%3C/svg%3E" alt="Project 4">
+                    <div class="portfolio-overlay">
+                        <h4>Event Activation</h4>
+                        <p>Aktivasi brand melalui event dan pengalaman interaktif</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect fill='%23f093fb' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EProject 5%3C/text%3E%3C/svg%3E" alt="Project 5">
+                    <div class="portfolio-overlay">
+                        <h4>Video Production</h4>
+                        <p>Produksi video komersial dan dokumenter berkualitas tinggi</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect fill='%234facfe' width='400' height='300'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='white'%3EProject 6%3C/text%3E%3C/svg%3E" alt="Project 6">
+                    <div class="portfolio-overlay">
+                        <h4>Digital Marketing Campaign</h4>
+                        <p>Kampanye digital terpadu dengan hasil yang terukur</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team" id="team">
+            <div class="section-title">
+                <h2>Tim Kami</h2>
+                <p>Para profesional kreatif di balik kesuksesan setiap proyek</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Budi Santoso</h4>
+                        <p>Creative Director</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Sari Wulandari</h4>
+                        <p>Art Director</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Andi Pratama</h4>
+                        <p>Account Manager</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="team-info">
+                        <h4>Dewi Kartika</h4>
+                        <p>Copywriter</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Hubungi Kami</h3>
+                    <p>Siap untuk memulai proyek berikutnya? Hubungi kami dan mari ciptakan sesuatu yang luar biasa bersama!</p>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Alamat:</strong><br>
+                            JL. KENARI NO 68, RT/RW.028/009,<br>
+                            MUJAMUJU, UMBULHARJO,<br>
+                            Kota Yogyakarta, DIY
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Telepon:</strong><br>
+                            082382466325
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-building"></i>
+                        <div>
+                            <strong>NPWP:</strong><br>
+                            31.375.081.2-541.000
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Kirim Pesan <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">PT BROMICA MC</div>
+                <p>Agensi periklanan kreatif yang berdedikasi untuk menciptakan kampanye yang berdampak dan memorable.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Layanan</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Periklanan TV & Digital</a></li>
+                    <li><a href="#services">Creative Copywriting</a></li>
+                    <li><a href="#services">Desain Grafis</a></li>
+                    <li><a href="#services">Fotografi & Videografi</a></li>
+                    <li><a href="#services">Strategi Branding</a></li>
+                    <li><a href="#services">Media Planning</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Navigasi</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#portfolio">Portofolio</a></li>
+                    <li><a href="#team">Tim</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ikuti Kami</h4>
+                <p>Temukan kami di media sosial</p>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <a href="#" style="font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="legal-links" style="text-align: center; margin-bottom: 2rem;">
+            <a href="#" onclick="openModal('privacyModal'); return false;">Kebijakan Privasi</a>
+            <a href="#" onclick="openModal('termsModal'); return false;">Syarat & Ketentuan</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 PT BROMICA MC. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div class="modal" id="privacyModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('privacyModal')">&times;</button>
+            <h2>Kebijakan Privasi</h2>
+
+            <h3>1. Pendahuluan</h3>
+            <p>PT BROMICA MC ("kami") berkomitmen untuk melindungi privasi data pribadi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi yang Anda berikan saat menggunakan layanan kami.</p>
+
+            <h3>2. Informasi yang Kami Kumpulkan</h3>
+            <p>Kami mungkin mengumpulkan informasi berikut:</p>
+            <ul>
+                <li><strong>Informasi Pribadi:</strong> Nama, alamat email, nomor telepon, dan informasi kontak lainnya yang Anda berikan secara sukarela.</li>
+                <li><strong>Informasi Penggunaan:</strong> Data tentang bagaimana Anda menggunakan situs web kami.</li>
+                <li><strong>Informasi Bisnis:</strong> Data terkait proyek dan kerjasama bisnis.</li>
+            </ul>
+
+            <h3>3. Penggunaan Informasi</h3>
+            <p>Kami menggunakan informasi yang dikumpulkan untuk:</p>
+            <ul>
+                <li>Menyediakan dan meningkatkan layanan kami</li>
+                <li>Merespon pertanyaan dan permintaan Anda</li>
+                <li>Mengirimkan informasi terkait layanan (dengan persetujuan Anda)</li>
+                <li>Memproses transaksi dan kerjasama bisnis</li>
+                <li>Menganalisis penggunaan untuk pengembangan layanan</li>
+            </ul>
+
+            <h3>4. Perlindungan Data</h3>
+            <p>Kami mengambil langkah-langkah keamanan yang wajar untuk melindungi informasi Anda dari akses, penggunaan, atau pengungkapan yang tidak sah. Namun, tidak ada metode transmisi internet yang 100% aman.</p>
+
+            <h3>5. Berbagi Informasi</h3>
+            <p>Kami tidak menjual, menyewakan, atau menukar informasi pribadi Anda dengan pihak ketiga tanpa persetujuan Anda, kecuali sebagaimana diwajibkan oleh hukum atau untuk melindungi hak-hak kami.</p>
+
+            <h3>6. Hak Anda</h3>
+            <p>Anda memiliki hak untuk:</p>
+            <ul>
+                <li>Mengakses informasi pribadi yang kami simpan tentang Anda</li>
+                <li>Memperbaiki informasi yang tidak akurat</li>
+                <li>Meminta penghapusan informasi pribadi Anda</li>
+                <li>Menarik persetujuan untuk penggunaan informasi</li>
+            </ul>
+
+            <h3>7. Kebijakan Cookies</h3>
+            <p>Website kami mungkin menggunakan cookies untuk meningkatkan pengalaman pengguna. Cookies adalah file kecil yang disimpan di perangkat Anda untuk mengingat preferensi Anda.</p>
+
+            <h3>8. Perubahan Kebijakan</h3>
+            <p>Kami berhak mengubah kebijakan ini dari waktu ke waktu. Perubahan akan dipublikasikan di halaman ini dengan tanggal pembaruan yang tertera.</p>
+
+            <h3>9. Kontak</h3>
+            <p>Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, silakan hubungi kami di:</p>
+            <p><strong>Email:</strong> info@bromicamc.com<br>
+            <strong>Telepon:</strong> 082382466325<br>
+            <strong>Alamat:</strong> JL. KENARI NO 68, MUJAMUJU, UMBULHARJO, Kota Yogyakarta, DIY</p>
+
+            <p><em>Diperbarui: Januari 2024</em></p>
+        </div>
+    </div>
+
+    <!-- Terms & Conditions Modal -->
+    <div class="modal" id="termsModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('termsModal')">&times;</button>
+            <h2>Syarat & Ketentuan</h2>
+
+            <h3>1. Pendahuluan</h3>
+            <p>Syarat & Ketentuan ini mengatur penggunaan layanan yang disediakan oleh PT BROMICA MC. Dengan mengakses atau menggunakan layanan kami, Anda menyetujui syarat & ketentuan ini.</p>
+
+            <h3>2. Definisi</h3>
+            <ul>
+                <li><strong>"Kami" atau "PT BROMICA MC"</strong> - PT BROMICA MC, perusahaan periklanan yang terdaftar di Indonesia</li>
+                <li><strong>"Klien"</strong> - Pihak yang menggunakan layanan kami</li>
+                <li><strong>"Layanan"</strong> - Semua layanan periklanan dan kreatif yang kami sediakan</li>
+                <li><strong>"Proyek"</strong> - Kegiatan atau pekerjaan yang disepakati antara Kami dan Klien</li>
+            </ul>
+
+            <h3>3. Lingkup Layanan</h3>
+            <p>PT BROMICA MC menyediakan layanan periklanan meliputi:</p>
+            <ul>
+                <li>Periklanan TV dan Digital</li>
+                <li>Creative Copywriting</li>
+                <li>Desain Grafis</li>
+                <li>Fotografi dan Videografi</li>
+                <li>Strategi Branding</li>
+                <li>Media Planning</li>
+                <li>Layanan kreatif lainnya sesuai kesepakatan</li>
+            </ul>
+
+            <h3>4. Kewajiban Klien</h3>
+            <p>Klien berkewajiban untuk:</p>
+            <ul>
+                <li>Memberikan informasi yang akurat dan lengkap</li>
+                <li>Mematuhi deadline yang telah disepakati</li>
+                <li>Memberikan persetujuan dan feedback tepat waktu</li>
+                <li>Membayar biaya layanan sesuai kesepakatan</li>
+                <li>Menghormati hak kekayaan intelektual</li>
+            </ul>
+
+            <h3>5. Kewajiban Kami</h3>
+            <p>Kami berkewajiban untuk:</p>
+            <ul>
+                <li>Menyediakan layanan dengan standar profesional</li>
+                <li>Menghormati deadline dan kesepakatan proyek</li>
+                <li>Menjaga kerahasiaan informasi klien</li>
+                <li>Memberikan layanan sesuai spesifikasi yang disepakati</li>
+                <li>Melakukan revisi sesuai ketentuan proyek</li>
+            </ul>
+
+            <h3>6. Pembayaran</h3>
+            <ul>
+                <li>Pembayaran dilakukan sesuai invoice yang diterbitkan</li>
+                <li>Waktu pembayaran ditetapkan dalam setiap proyek</li>
+                <li>Keterlambatan pembayaran dapat dikenakan denda</li>
+                <li>Harga dapat berubah sesuai perubahan lingkup proyek</li>
+            </ul>
+
+            <h3>7. Hak Kekayaan Intelektual</h3>
+            <ul>
+                <li>Semua karya yang dihasilkan oleh PT BROMICA MC dilindungi hak cipta</li>
+                <li>Klien mendapatkan hak penggunaan setelah pembayaran lunas</li>
+                <li>Materi yang disediakan oleh klien harus bebas dari pelanggaran hak cipta</li>
+                <li>PT BROMICA MC berhak menggunakan portofolio untuk keperluan promosi</li>
+            </ul>
+
+            <h3>8. Pembatalan & Penghentian</h3>
+            <ul>
+                <li>Klien dapat membatalkan proyek dengan pemberitahuan tertulis</li>
+                <li>Pembatalan di tengah proyek akan dikenakan biaya sesuai progres</li>
+                <li>Kami berhak menghentikan layanan jika terjadi pelanggaran syarat & ketentuan</li>
+                <li>Penghentian layanan tidak membebaskan klien dari kewajiban pembayaran</li>
+            </ul>
+
+            <h3>9. Kerahasiaan</h3>
+            <p>PT BROMICA MC berkomitmen untuk menjaga kerahasiaan semua informasi yang diterima dari klien, termasuk data bisnis, strategi, dan materi yang sensitif.</p>
+
+            <h3>10. Keterbatasan Tanggung Jawab</h3>
+            <p>PT BROMICA MC tidak bertanggung jawab atas kerugian langsung atau tidak langsung yang timbul dari penggunaan layanan kami, sejauh diizinkan oleh hukum yang berlaku.</p>
+
+            <h3>11. Force Majeure</h3>
+            <p>PT BROMICA MC tidak bertanggung jawab atas keterlambatan atau ketidakmampuan untuk melaksanakan kewajiban akibat kejadian di luar kendali kami (force majeure), termasuk bencana alam, perang, atau gangguan teknologi.</p>
+
+            <h3>12. Sengketa & Hukum</h3>
+            <ul>
+                <li>Sengketa yang timbul akan diselesaikan melalui musyawarah</li>
+                <li>Jika tidak tercapai kesepakatan, sengketa akan dibawa ke pengadilan di Yogyakarta</li>
+                <li>Syarat & ketentuan ini tunduk pada hukum Republik Indonesia</li>
+            </ul>
+
+            <h3>13. Perubahan Syarat & Ketentuan</h3>
+            <p>PT BROMICA MC berhak mengubah syarat & ketentuan ini dari waktu ke waktu. Perubahan akan diinformasikan kepada klien melalui situs web kami.</p>
+
+            <h3>14. Kontak</h3>
+            <p>Untuk pertanyaan lebih lanjut, hubungi kami di:</p>
+            <p><strong>PT BROMICA MC</strong><br>
+            <strong>Alamat:</strong> JL. KENARI NO 68, RT/RW.028/009, MUJAMUJU, UMBULHARJO, Kota Yogyakarta, DIY<br>
+            <strong>Telepon:</strong> 082382466325<br>
+            <strong>NPWP:</strong> 31.375.081.2-541.000</p>
+
+            <p><em>Diperbarui: Januari 2024</em></p>
+        </div>
+    </div>
+
+    <script>
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', function() {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.background = 'white';
+                navLinks.style.padding = '2rem';
+                navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Close mobile menu if open
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Form submission handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah terkirim. Kami akan segera menghubungi Anda.');
+            this.reset();
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .portfolio-item, .team-card, .stat-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
